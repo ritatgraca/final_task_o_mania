@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Task List (Completed) - Task-o-Mania</title>
+    <meta name="description" content="View completed household tasks and overall status for Task-o-Mania." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style_task_list.css" />
+  </head>
+  <body>
+    <div class="background" aria-hidden="true"></div>
+
+    <div class="dashboard-shell">
+      <aside class="sidebar" aria-label="Primary">
+        <a class="sidebar__logo" href="index.html" aria-label="Task-o-Mania home">
+          <span class="sidebar__logo-icon" aria-hidden="true">☆</span>
+        </a>
+
+       <nav class="sidebar__nav" aria-label="Main navigation">
+          <a class="sidebar__link" href="dashboard.html">
+            <span aria-hidden="true">🏠</span>
+          </a>
+          <a class="sidebar__link" href="households.html">
+            <span aria-hidden="true">👥</span>
+          </a>
+          <a class="sidebar__link" href="reward-store.html">
+            <span aria-hidden="true">🛒</span>
+          </a>
+          <a class="sidebar__link sidebar__link--active" href="task-list-total-tasks.html" aria-current="page">
+            <span aria-hidden="true">🗒</span>
+          </a>
+           <a class="sidebar__link" href="create-task.html">
+            <span aria-hidden="true">➕</span>
+          </a>
+           <a class="sidebar__link" href="activity.html">
+            <span aria-hidden="true">📊</span>
+          </a>
+          <a class="sidebar__link" href="leaderboard.html">
+            <span aria-hidden="true">🏆</span>
+          </a>
+          
+          <a class="sidebar__link" href="settings.html">
+            <span aria-hidden="true">⚙️</span>
+          </a>
+        
+        </nav>
+
+      </aside>
+
+      <div class="content">
+        <header class="topbar">
+          <button class="back-btn" type="button" aria-label="Go back" onclick="history.back()">
+            <span aria-hidden="true">&#x2039;</span>
+          </button>
+
+          <h1 class="page-title">Task List &mdash; Completed</h1>
+
+          <a class="avatar" href="profile.html" aria-label="Your profile">
+            <img src="assets/avatar-placeholder.jpg" alt="User avatar" />
+          </a>
+        </header>
+
+        <main class="page" role="main">
+          <section class="stats" aria-label="Task metrics">
+            <article class="stat-card">
+              <span class="value">7</span>
+              <p>Total tasks</p>
+            </article>
+            <article class="stat-card stat-card--pending" style="background: #ffeec3;">
+              <span class="value">1</span>
+              <p>Pending</p>
+            </article>
+            <article class="stat-card stat-card--completed">
+              <span class="value">5</span>
+              <p>Completed</p>
+            </article>
+            <article class="stat-card stat-card--review" style="background: #dff2fb;">
+              <span class="value">1</span>
+              <p>Under Review</p>
+            </article>
+          </section>
+
+          <section class="task-list" aria-label="Tasks">
+            <article class="task-card task-card--completed">
+              <div class="accent"></div>
+              <div class="task-card__body">
+                <p class="meta">Uploaded by DAD</p>
+                <h2>Clean the living room</h2>
+                <a href="#">150 credits 💎</a>
+              </div>
+              <span class="badge badge--completed">Completed</span>
+            </article>
+
+            <article class="task-card task-card--completed">
+              <div class="accent"></div>
+              <div class="task-card__body">
+                <p class="meta">Uploaded by MOM</p>
+                <h2>Sort recycling bins</h2>
+                <a href="#">40 credits 💎</a>
+              </div>
+              <span class="badge badge--completed">Completed</span>
+            </article>
+
+            <article class="task-card task-card--completed">
+              <div class="accent"></div>
+              <div class="task-card__body">
+                <p class="meta">Uploaded by Livia</p>
+                <h2>Water all indoor plants</h2>
+                <a href="#">60 credits 💎</a>
+              </div>
+              <span class="badge badge--completed">Completed</span>
+            </article>
+
+            <article class="task-card task-card--pending" style="background: rgba(255, 249, 234, 0.85); filter: saturate(0.75);">
+              <div class="accent"></div>
+              <div class="task-card__body">
+                <p class="meta">Uploaded by MOM</p>
+                <h2>Organize the craft drawer</h2>
+                <a href="#">70 credits 💎</a>
+              </div>
+              <span class="badge badge--pending" style="background: #ffdca2; color: #7b4b00;">Pending</span>
+            </article>
+
+            <article class="task-card task-card--review" style="background: rgba(233, 246, 255, 0.9); filter: saturate(0.75);">
+              <div class="accent"></div>
+              <div class="task-card__body">
+                <p class="meta">Uploaded by DAD</p>
+                <h2>Assemble the new bookshelf</h2>
+                <a href="#">120 credits 💎</a>
+              </div>
+              <span class="badge badge--review" style="background: #9ed9f6; color: #0b4c65;">Under Review</span>
+            </article>
+          </section>
+        </main>
+
+        <button class="fab" type="button" aria-label="Add task">
+          <span aria-hidden="true">+</span>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
