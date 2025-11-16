@@ -83,21 +83,71 @@
 
         <main class="page" role="main">
           <form class="form" action="#" method="post">
-            <div class="form-field">
-              <label for="task-name">Task Name <span aria-hidden="true">*</span></label>
-              <div class="input-wrapper">
-                <input id="task-name" name="task_name" type="text" value="Clean the living room" required />
+            <section class="form-section">
+              <div class="form-section__header">
+                <h2>Task basics</h2>
+                <p>Give this task a name and decide how the points are handled.</p>
               </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-field form-field--small">
-                <label for="task-points">Points <span aria-hidden="true">*</span></label>
+              <div class="form-field">
+                <label for="task-name">Task Name <span aria-hidden="true">*</span></label>
                 <div class="input-wrapper">
+                  <input id="task-name" name="task_name" type="text" value="Clean the living room" required />
+                </div>
+              </div>
+
+              <div class="form-field form-field--points">
+                <label for="task-points">Points <span aria-hidden="true">*</span></label>
+                <div class="input-wrapper input-wrapper--points">
                   <input id="task-points" name="task_points" type="number" min="0" value="150" required />
                 </div>
               </div>
 
+              <div class="form-field form-field--split">
+                <label class="split-toggle">
+                  <input type="checkbox" id="split-points-toggle" name="split_points" />
+                  <span class="split-toggle__slider" aria-hidden="true"></span>
+                  <div>
+                    <span class="split-toggle__label">Split points</span>
+                    <p class="split-note">When disabled, every point goes to one person.</p>
+                  </div>
+                </label>
+                <div class="split-points split-points--disabled" aria-live="polite">
+                  <p class="split-hint">Choose who will share the points.</p>
+                  <ul class="split-list">
+                    <li>
+                      <label>
+                        <input type="checkbox" value="sophia" disabled />
+                        Sophia
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="checkbox" value="victor" disabled />
+                        Victor
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="checkbox" value="julia" disabled />
+                        Julia
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="checkbox" value="liam" disabled />
+                        Liam
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="form-section__header">
+                <h2>Attachments</h2>
+                <p>Add the task before it is completed.</p>
+              </div>
               <div class="form-field form-field--upload">
                 <label for="task-photo">+ Add Photo <span aria-hidden="true">*</span></label>
                 <label class="upload" for="task-photo">
@@ -105,26 +155,37 @@
                   <span>Upload your photo</span>
                 </label>
               </div>
-            </div>
+            </section>
 
-            <div class="form-field">
-              <label for="task-description">Task Description</label>
-              <div class="input-wrapper">
-                <textarea id="task-description" name="task_description" rows="4" required>
-Make sure the floor is vacuumed, the furniture is dusted, and the cushions are neatly arranged. You'll earn 150 points and help keep the house cozy for everyone!
-                </textarea>
+            <section class="form-section">
+              <div class="form-section__header">
+                <h2>Description</h2>
               </div>
-            </div>
+              <div class="form-field">
+                <label for="task-description">Task Description</label>
+                <div class="input-wrapper">
+                  <textarea id="task-description" name="task_description" rows="4" required>
+Make sure the floor is vacuumed, the furniture is dusted, and the cushions are neatly arranged. You'll earn 150 points and help keep the house cozy for everyone!
+                  </textarea>
+                </div>
+              </div>
+            </section>
 
-            <label class="toggle">
-              <input type="checkbox" name="ai_validation" checked />
-              <span class="slider" aria-hidden="true"></span>
-              <span class="toggle__label">Apply the AI Validation</span>
-            </label>
+            <section class="form-section form-section--options">
+              <div class="form-section__header">
+                <h2>Validation</h2>
+                <p>Review how this task will be approved.</p>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" name="ai_validation" checked />
+                <span class="slider" aria-hidden="true"></span>
+                <span class="toggle__label">Apply the AI Validation</span>
+              </label>
 
-            <div class="actions">
-              <button type="submit" class="btn-primary">Add Task</button>
-            </div>
+              <div class="actions">
+                <button type="submit" class="btn-primary">Add Task</button>
+              </div>
+            </section>
           </form>
         </main></div>
     </div>
@@ -145,6 +206,9 @@ Make sure the floor is vacuumed, the furniture is dusted, and the cushions are n
         const form = document.querySelector('.form');
         const modal = document.querySelector('.success-modal');
         const closeBtn = document.querySelector('.success-modal__close');
+        const splitToggle = document.getElementById('split-points-toggle');
+        const splitChoices = document.querySelectorAll('.split-list input[type="checkbox"]');
+        const splitContainer = document.querySelector('.split-points');
 
         if (!form || !modal || !closeBtn) return;
 
@@ -174,6 +238,21 @@ Make sure the floor is vacuumed, the furniture is dusted, and the cushions are n
             hideModal();
           }
         });
+
+        const syncSplitState = () => {
+          if (!splitToggle || !splitContainer) return;
+          const enabled = splitToggle.checked;
+          splitContainer.classList.toggle('split-points--disabled', !enabled);
+          splitChoices.forEach((choice) => {
+            choice.disabled = !enabled;
+            if (!enabled) choice.checked = false;
+          });
+        };
+
+        if (splitToggle) {
+          syncSplitState();
+          splitToggle.addEventListener('change', syncSplitState);
+        }
       })();
     </script>
   </body>

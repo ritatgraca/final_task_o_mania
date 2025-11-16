@@ -423,6 +423,7 @@
         generateBtn?.addEventListener('click', () => {
           const random = Math.random().toString(36).slice(2, 10);
           inviteInput.value = `https://task-o-mania.app/invite/${random}`;
+          showInfo('Invite link generated successfully.');
         });
 
         copyBtn?.addEventListener('click', () => {

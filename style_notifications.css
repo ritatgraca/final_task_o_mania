@@ -108,9 +108,16 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 26px; /* optional, to mirror create-task spacing */
   padding-top: 30px;
+  width: min(640px, 100%);
+  margin: 0 auto;
 }
+.group,
+.notification {
+  width: 100%;
+}
+
 
 .group header {
   margin-bottom: 18px;

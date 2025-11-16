@@ -101,52 +101,141 @@
             </article>
           </section>
 
+          <section class="new-reward" aria-label="Add new reward">
+            <form class="new-reward__form">
+              <label>
+                <span>Reward name</span>
+                <div class="input-wrapper">
+                  <input type="text" name="reward_name" placeholder="Movie night" required />
+                </div>
+              </label>
+              <label>
+                <span>Description</span>
+                <div class="input-wrapper">
+                  <textarea name="reward_description" rows="2" placeholder="Describe the reward" required></textarea>
+                </div>
+              </label>
+              <label>
+                <span>Points</span>
+                <div class="input-wrapper">
+                  <input type="number" name="reward_points" min="1" placeholder="100" required />
+                </div>
+              </label>
+              <button type="submit" class="btn-primary">Add reward</button>
+            </form>
+          </section>
+
           <section class="reward-grid" aria-label="Available rewards">
             <!-- Repeat reward cards -->
             <article class="reward-card">
               <h2>Ice Cream Treat</h2>
               <p>Pick your favorite ice cream flavor from the local shop</p>
               <p class="points">150 Points</p>
-              <button type="button">Redeem Now</button>
+              <button type="button" class="redeem-btn">Redeem Now</button>
             </article>
 
             <article class="reward-card">
               <h2>Ice Cream Treat</h2>
               <p>Pick your favorite ice cream flavor from the local shop</p>
               <p class="points">150 Points</p>
-              <button type="button">Redeem Now</button>
+              <button type="button" class="redeem-btn">Redeem Now</button>
             </article>
 
             <article class="reward-card">
               <h2>Ice Cream Treat</h2>
               <p>Pick your favorite ice cream flavor from the local shop</p>
               <p class="points">150 Points</p>
-              <button type="button">Redeem Now</button>
+              <button type="button" class="redeem-btn">Redeem Now</button>
             </article>
 
             <article class="reward-card">
               <h2>Ice Cream Treat</h2>
               <p>Pick your favorite ice cream flavor from the local shop</p>
               <p class="points">150 Points</p>
-              <button type="button">Redeem Now</button>
+              <button type="button" class="redeem-btn">Redeem Now</button>
             </article>
 
             <article class="reward-card">
               <h2>Ice Cream Treat</h2>
               <p>Pick your favorite ice cream flavor from the local shop</p>
               <p class="points">150 Points</p>
-              <button type="button">Redeem Now</button>
+              <button type="button" class="redeem-btn">Redeem Now</button>
             </article>
 
             <article class="reward-card">
               <h2>Ice Cream Treat</h2>
               <p>Pick your favorite ice cream flavor from the local shop</p>
               <p class="points">2000 Points</p>
-              <button type="button">Redeem Now</button>
+              <button type="button" class="redeem-btn">Redeem Now</button>
             </article>
           </section>
-        </main></div>
+        </main>
+
+        <div class="reward-modal" role="alertdialog" aria-modal="true" aria-hidden="true">
+          <div class="reward-modal__card">
+            <h2>Reward redeemed</h2>
+            <p>Your points were redeemed successfully.</p>
+            <button type="button" class="reward-modal__close">OK</button>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <script>
+      (function () {
+        const buttons = document.querySelectorAll('.redeem-btn');
+        const modal = document.querySelector('.reward-modal');
+        const closeBtn = document.querySelector('.reward-modal__close');
+        const newRewardForm = document.querySelector('.new-reward__form');
+        const rewardGrid = document.querySelector('.reward-grid');
+
+        if (!buttons.length || !modal || !closeBtn) return;
+
+        const showModal = () => {
+          modal.setAttribute('aria-hidden', 'false');
+          modal.classList.add('reward-modal--visible');
+        };
+
+        buttons.forEach((button) => {
+          button.addEventListener('click', (event) => {
+            event.preventDefault();
+            showModal();
+          });
+        });
+
+        closeBtn.addEventListener('click', () => {
+          modal.classList.remove('reward-modal--visible');
+          modal.setAttribute('aria-hidden', 'true');
+          window.location.href = 'reward-store.html';
+        });
+        newRewardForm?.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const formData = new FormData(newRewardForm);
+          const name = formData.get('reward_name');
+          const description = formData.get('reward_description');
+          const points = formData.get('reward_points');
+
+          if (!name || !description || !points || !rewardGrid) return;
+
+          const card = document.createElement('article');
+          card.className = 'reward-card';
+          card.innerHTML = `
+            <h2>${name}</h2>
+            <p>${description}</p>
+            <p class="points">${points} Points</p>
+            <button type="button" class="redeem-btn">Redeem Now</button>
+          `;
+          rewardGrid.prepend(card);
+          newRewardForm.reset();
+
+          const button = card.querySelector('button');
+          button?.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            showModal();
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
 
