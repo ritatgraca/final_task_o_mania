@@ -1,7 +1,7 @@
 /* Task-o-Mania - Activity Page */
 
 :root {
-  --page-bg-image: url('assets/PageBackground.png');
+  --page-bg-image: url('IMAGES/PageBackground.png');
   --sidebar-width: 84px;
   --text: #16161d;
   --muted: rgba(22, 22, 29, 0.65);
@@ -336,6 +336,27 @@ body {
 @media (max-width: 960px) {
   :root { --sidebar-width: 72px; }
   .content { padding: 22px 24px 32px; }
+  .topbar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .back-btn { margin-bottom: 8px; }
+  .topbar__actions { justify-content: center; }
+  .page-title { text-align: center; width: 100%; }
+  .chart-panel { padding: 20px; }
+  .chart-panel__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .chart-panel__header ul { flex-wrap: wrap; gap: 12px; }
+  .activity-scroll {
+    grid-auto-flow: row;
+    grid-auto-columns: unset;
+    overflow-x: visible;
+  }
+  .activity-card { scroll-snap-align: unset; }
   .fab { left: calc(var(--sidebar-width) + 16px); }
 }
 
@@ -344,9 +365,14 @@ body {
   .sidebar { flex-direction: row; justify-content: space-between; width: 100%; height: 72px; padding: 12px 24px; }
   .sidebar__nav { flex-direction: row; margin: 0; }
   .content { padding-top: 96px; }
-  .page-title { font-size: 36px; }
+  .topbar { align-items: stretch; }
+  .page-title { font-size: 34px; }
+  .topbar__actions { justify-content: space-between; }
   .fab { left: auto; right: 24px; bottom: 24px; }
   .metrics { grid-template-columns: 1fr; }
   .metric-card__circle { position: static; transform: none; justify-self: end; }
+  .chart-panel { padding: 18px; }
+  .activity-scroll { gap: 16px; }
+  .activity-card { width: 100%; }
 }
 

@@ -1,14 +1,14 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Create Task - Task-o-Mania</title>
-    <meta name="description" content="Add a new task for your household members." />
+    <title>Deactivate Account - Task-o-Mania</title>
+    <meta name="description" content="Deactivate your Task-o-Mania account with a quick confirmation form." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style_create_task.css" />
+    <link rel="stylesheet" href="style_deactivate_account.css" />
     <link rel="stylesheet" href="style_user_chrome.css" />
   </head>
   <body>
@@ -20,7 +20,7 @@
           <span class="sidebar__logo-icon" aria-hidden="true">☆</span>
         </a>
 
-       <nav class="sidebar__nav" aria-label="Main navigation">
+        <nav class="sidebar__nav" aria-label="Main navigation">
           <a class="sidebar__link" href="dashboard.html" data-tooltip="Home">
             <span aria-hidden="true">🏠</span>
           </a>
@@ -33,22 +33,19 @@
           <a class="sidebar__link" href="task-list-total-tasks.html" data-tooltip="Task List">
             <span aria-hidden="true">🗒</span>
           </a>
-           <a class="sidebar__link" href="create-task.html" data-tooltip="Create Reward">
+          <a class="sidebar__link" href="create-task.html" data-tooltip="Create Reward">
             <span aria-hidden="true">➕</span>
           </a>
-           <a class="sidebar__link" href="activity.html" data-tooltip="Activity">
+          <a class="sidebar__link" href="activity.html" data-tooltip="Activity">
             <span aria-hidden="true">📊</span>
           </a>
           <a class="sidebar__link" href="leaderboard.html" data-tooltip="Leaderboard">
             <span aria-hidden="true">🏆</span>
           </a>
-          
           <a class="sidebar__link" href="settings.html" data-tooltip="Definitions">
             <span aria-hidden="true">⚙️</span>
           </a>
-        
         </nav>
-
       </aside>
 
       <div class="content">
@@ -57,9 +54,9 @@
             <span aria-hidden="true">&#x2039;</span>
           </button>
 
-          <h1 class="page-title">Create Task</h1>
+          <h1 class="page-title">Deactivate Account</h1>
 
-          <div class="user-actions">
+          <div class="topbar__actions user-actions">
             <a class="notification-button" data-tooltip="Notifications" href="notifications.html" aria-label="Go to notifications">
               <svg aria-hidden="true" width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 2C7.686 2 5 4.686 5 8v1.383c0 .765-.293 1.5-.829 2.036l-.757.757C2.156 13.434 3.037 15.5 4.828 15.5h12.344c1.791 0 2.672-2.066 1.414-3.324l-.757-.757A2.882 2.882 0 0 1 17 9.383V8c0-3.314-2.686-6-6-6Z" stroke-linecap="round" />
@@ -73,50 +70,52 @@
         </header>
 
         <main class="page" role="main">
-          <form class="form" action="#" method="post">
-            <div class="form-field">
-              <label for="task-name">Task Name <span aria-hidden="true">*</span></label>
-              <div class="input-wrapper">
-                <input id="task-name" name="task_name" type="text" value="Clean the living room" required />
+          <section class="panel">
+            <header class="panel__header">
+              <div>
+                <h2>We're sorry to see you go!</h2>
+                <p>Please let us know why you're leaving and confirm your decision below.</p>
               </div>
-            </div>
+            </header>
 
-            <div class="form-row">
-              <div class="form-field form-field--small">
-                <label for="task-points">Points <span aria-hidden="true">*</span></label>
-                <div class="input-wrapper">
-                  <input id="task-points" name="task_points" type="number" min="0" value="150" required />
+            <form class="form deactivate-form" action="#" method="post">
+              <div class="form-field">
+                <label for="reason">Reason for deactivation <span aria-hidden="true">*</span></label>
+                <div class="input-wrapper select-wrapper">
+                  <select id="reason" name="reason" required>
+                    <option value="" disabled selected>Select a reason</option>
+                    <option value="privacy">Privacy concerns</option>
+                    <option value="features">Missing features I need</option>
+                    <option value="break">Taking a break</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
               </div>
 
-              <div class="form-field form-field--upload">
-                <label for="task-photo">+ Add Photo <span aria-hidden="true">*</span></label>
-                <label class="upload" for="task-photo">
-                  <input id="task-photo" name="task_photo" type="file" accept="image/*" hidden />
-                  <span>Upload your photo</span>
-                </label>
+              <div class="form-field">
+                <label for="comment">Optional comment</label>
+                <div class="input-wrapper">
+                  <textarea id="comment" name="comment" rows="4" placeholder="Share more context (optional)"></textarea>
+                </div>
               </div>
-            </div>
 
-            <div class="form-field">
-              <label for="task-description">Task Description</label>
-              <div class="input-wrapper">
-                <textarea id="task-description" name="task_description" rows="4" required>
-Make sure the floor is vacuumed, the furniture is dusted, and the cushions are neatly arranged. You'll earn 150 points and help keep the house cozy for everyone!
-                </textarea>
+              <div class="form-field">
+                <label for="password">Confirm password <span aria-hidden="true">*</span></label>
+                <div class="input-wrapper">
+                  <input id="password" name="password" type="password" placeholder="Enter your password" required />
+                </div>
               </div>
-            </div>
 
-            <label class="toggle">
-              <input type="checkbox" name="ai_validation" checked />
-              <span class="slider" aria-hidden="true"></span>
-              <span class="toggle__label">Apply the AI Validation</span>
-            </label>
+              <label class="confirm-check">
+                <input type="checkbox" required />
+                <span>I understand that this action will deactivate my account.</span>
+              </label>
 
-            <div class="actions">
-              <button type="submit" class="btn-primary">Add Task</button>
-            </div>
-          </form>
+              <div class="actions">
+                <button type="submit" class="btn-primary btn-danger">Confirm Deactivation</button>
+              </div>
+            </form>
+          </section>
         </main>
 
         <a class="fab" href="submit-task.html" aria-label="Submit task">
@@ -125,33 +124,30 @@ Make sure the floor is vacuumed, the furniture is dusted, and the cushions are n
       </div>
     </div>
 
-    <div class="success-modal" role="alertdialog" aria-modal="true" aria-labelledby="success-title" aria-hidden="true">
-      <div class="success-modal__card">
-        <h2 id="success-title">Task created successfully</h2>
-        <p>View tasks to track progress right away.</p>
-        <div class="success-modal__actions">
-          <button type="button" class="success-modal__close">Close</button>
-          <a class="success-modal__primary" href="task-list-total-tasks.html">View tasks</a>
-        </div>
+    <div class="deactivate-modal" role="alertdialog" aria-modal="true" aria-labelledby="deactivate-modal-title" aria-hidden="true">
+      <div class="deactivate-modal__card">
+        <h2 id="deactivate-modal-title">Account deactivated successfully.</h2>
+        <p>We hope to see you back soon.</p>
+        <button type="button" class="deactivate-modal__close">Close</button>
       </div>
     </div>
 
     <script>
       (function () {
-        const form = document.querySelector('.form');
-        const modal = document.querySelector('.success-modal');
-        const closeBtn = document.querySelector('.success-modal__close');
+        const form = document.querySelector('.deactivate-form');
+        const modal = document.querySelector('.deactivate-modal');
+        const closeBtn = document.querySelector('.deactivate-modal__close');
 
         if (!form || !modal || !closeBtn) return;
 
         function showModal() {
           modal.setAttribute('aria-hidden', 'false');
-          modal.classList.add('success-modal--visible');
+          modal.classList.add('deactivate-modal--visible');
         }
 
         function hideModal() {
           modal.setAttribute('aria-hidden', 'true');
-          modal.classList.remove('success-modal--visible');
+          modal.classList.remove('deactivate-modal--visible');
         }
 
         form.addEventListener('submit', function (event) {
@@ -159,22 +155,17 @@ Make sure the floor is vacuumed, the furniture is dusted, and the cushions are n
           showModal();
         });
 
-        closeBtn.addEventListener('click', hideModal);
+        closeBtn.addEventListener('click', function () {
+          hideModal();
+          window.location.href = 'index.html';
+        });
         modal.addEventListener('click', function (event) {
-          if (event.target === modal) {
-            hideModal();
-          }
+          if (event.target === modal) hideModal();
         });
         window.addEventListener('keydown', function (event) {
-          if (event.key === 'Escape') {
-            hideModal();
-          }
+          if (event.key === 'Escape') hideModal();
         });
       })();
     </script>
   </body>
 </html>
-
-
-
-

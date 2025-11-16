@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Settings - Task-o-Mania</title>
-    <meta name="description" content="Manage Task-o-Mania preferences and controls." />
+    <title>Task List — Under Review Tasks - Task-o-Mania</title>
+    <meta name="description" content="Focus on the household tasks that are currently under review." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style_settings.css" />
+    <link rel="stylesheet" href="style_task_list.css" />
     <link rel="stylesheet" href="style_user_chrome.css" />
   </head>
   <body>
@@ -20,7 +20,7 @@
           <span class="sidebar__logo-icon" aria-hidden="true">☆</span>
         </a>
 
-     <nav class="sidebar__nav" aria-label="Main navigation">
+       <nav class="sidebar__nav" aria-label="Main navigation">
           <a class="sidebar__link" href="dashboard.html" data-tooltip="Home">
             <span aria-hidden="true">🏠</span>
           </a>
@@ -30,10 +30,10 @@
           <a class="sidebar__link" href="reward-store.html" data-tooltip="Reward Store">
             <span aria-hidden="true">🛒</span>
           </a>
-          <a class="sidebar__link" href="task-list-total-tasks.html" data-tooltip="Task List">
+          <a class="sidebar__link" href="task-list-under_review-tasks.html" data-tooltip="Task List">
             <span aria-hidden="true">🗒</span>
           </a>
-          <a class="sidebar__link" href="create-task.html" data-tooltip="Create Reward">
+           <a class="sidebar__link" href="create-task.html" data-tooltip="Create Reward">
             <span aria-hidden="true">➕</span>
           </a>
            <a class="sidebar__link" href="activity.html" data-tooltip="Activity">
@@ -48,6 +48,7 @@
           </a>
         
         </nav>
+
       </aside>
 
       <div class="content">
@@ -56,7 +57,7 @@
             <span aria-hidden="true">&#x2039;</span>
           </button>
 
-          <h1 class="page-title">Settings</h1>
+          <h1 class="page-title">Task List &mdash; Under Review</h1>
 
           <div class="user-actions">
             <a class="notification-button" data-tooltip="Notifications" href="notifications.html" aria-label="Go to notifications">
@@ -72,60 +73,55 @@
         </header>
 
         <main class="page" role="main">
-          <section class="grid" aria-label="Settings sections">
-            <a class="tile" href="settings/household_management.html"><div class="icon">🏡</div><div><h2>Household Management</h2><p>Organize members and roles.</p></div></a>
-            <a class="tile" href="#">
-              <div class="icon">🤖</div>
-              <div>
-                <h2>AI Validation</h2>
-                <p>Control how AI reviews or approves.</p>
-              </div>
+          <section class="stats" aria-label="Task metrics">
+            <a class="stat-card" href="task-list-total-tasks.html">
+              <span class="value">7</span>
+              <p>Total tasks</p>
             </a>
-            <a class="tile" href="#">
-              <div class="icon">🌐</div>
-              <div>
-                <h2>Global preferences</h2>
-                <p>Set your default language and timezone.</p>
-              </div>
+            <a class="stat-card stat-card--pending" href="task-list-pending-tasks.html">
+              <span class="value">1</span>
+              <p>Pending</p>
             </a>
-            <a class="tile" href="#">
-              <div class="icon">📊</div>
-              <div>
-                <h2>All your data</h2>
-                <p>View or delete your personal and household data securely.</p>
-              </div>
+            <a class="stat-card stat-card--completed" href="task-list-completed-tasks.html">
+              <span class="value">5</span>
+              <p>Completed</p>
             </a>
-            <a class="tile" href="#">
-              <div class="icon">🔔</div>
-              <div>
-                <h2>Notifications</h2>
-                <p>Choose when and how you receive updates.</p>
-              </div>
-            </a>
-            <a class="tile" href="#">
-              <div class="icon">🔐</div>
-              <div>
-                <h2>Privacy & sharing</h2>
-                <p>Manage visibility, sharing preferences, and privacy controls.</p>
-              </div>
+            <a class="stat-card stat-card--review" href="task-list-under_review-tasks.html">
+              <span class="value">1</span>
+              <p>Under Review</p>
             </a>
           </section>
 
-          <p class="cta-text">
-            Need to deactivate your account? <a href="deactivate-account.html">Take care of that now</a>
-          </p>
+          <section class="task-list" aria-label="Tasks under review">
+            <article class="task-card task-card--review">
+              <div class="accent"></div>
+              <div class="task-card__body">
+                <p class="meta">Uploaded by DAD</p>
+                <h2>Assemble the new bookshelf</h2>
+                <a href="#">120 credits 💎</a>
+              </div>
+              <span class="badge badge--review">Under Review</span>
+            </article>
+
+            <article class="task-card task-card--review">
+              <div class="accent"></div>
+              <div class="task-card__body">
+                <p class="meta">Uploaded by MOM</p>
+                <h2>Verify science fair project photos</h2>
+                <a href="#">80 credits 💎</a>
+              </div>
+              <span class="badge badge--review">Under Review</span>
+            </article>
+          </section>
         </main>
 
+        <a class="fab" href="submit-task.html" aria-label="Submit task">
+          <span aria-hidden="true">+</span>
+        </a>
       </div>
     </div>
   </body>
 </html>
-
-
-
-
-
-
 
 
 

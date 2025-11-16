@@ -1,7 +1,7 @@
 /* Task-o-Mania - Sign In Screen */
 
 :root {
-  --page-bg-image: url('assets/PageBackground.png');
+  --page-bg-image: url('IMAGES/PageBackground.png');
   --text: #16161d;
   --muted: rgba(22, 22, 29, 0.65);
   --card-bg: rgba(255, 255, 255, 0.65);

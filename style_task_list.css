@@ -1,7 +1,7 @@
 /* Task-o-Mania - Task List */
 
 :root {
-  --page-bg-image: url('assets/PageBackground.png');
+  --page-bg-image: url('IMAGES/PageBackground.png');
   --sidebar-width: 84px;
   --text: #16161d;
   --muted: rgba(22, 22, 29, 0.65);
@@ -118,16 +118,24 @@ body {
 }
 
 .stat-card {
+  display: block;
   padding: 24px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.9);
   box-shadow: 0 18px 34px rgba(140, 120, 200, 0.18);
   text-align: center;
+  text-decoration: none;
+  color: var(--text);
 }
 
 .stat-card .value { display: block; font-size: 32px; font-weight: 800; margin-bottom: 6px; }
 .stat-card p { margin: 0; color: var(--muted); font-weight: 600; }
+
+.stat-card:focus-visible {
+  outline: 2px solid var(--accent-1);
+  outline-offset: 4px;
+}
 
 .stat-card--pending { background: #ffd67c; }
 .stat-card--completed { background: #9fe0a6; }
